@@ -1,0 +1,13 @@
+D:\Course\Stock\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyzer.csprojAssemblyReference.cache
+D:\Course\Stock\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyzer.csproj.CoreCompileInputs.cache
+D:\Course\Stock\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyzer.AssemblyInfoInputs.cache
+D:\Course\Stock\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyzer.AssemblyInfo.cs
+D:\Course\Stock\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\StockAnalyzer.deps.json
+D:\Course\Stock\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\StockAnalyzer.runtimeconfig.json
+D:\Course\Stock\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\StockAnalyzer.runtimeconfig.dev.json
+D:\Course\Stock\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\StockAnalyzer.dll
+D:\Course\Stock\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\StockAnalyzer.pdb
+D:\Course\Stock\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyzer.dll
+D:\Course\Stock\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyzer.pdb
+D:\Course\Stock\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\Files\a\stock-a.csv
+D:\Course\Stock\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\Files\b\stock-b.csv

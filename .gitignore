@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/StockAnalyzer/.vs/StockAnalyzer/v15
+/.vs
+/StockAnalyzer/StockAnalyzer/bin/Debug/netcoreapp2.0
