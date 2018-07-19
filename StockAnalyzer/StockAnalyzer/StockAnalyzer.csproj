@@ -10,10 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Files\a\stock-a.csv">
+    <None Update="Files\stock-a.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Files\b\stock-b.csv">
+    <None Update="Files\stock-b.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

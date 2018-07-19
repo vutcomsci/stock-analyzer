@@ -2,7 +2,6 @@
 using StockAnalyzer.Model;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -13,33 +12,36 @@ namespace StockAnalyzer
     public static class Program
     {
         static List<StockItem> _items = new List<StockItem>();
-        delegate List<IGrouping<object, StockItem>> TimeFrameDate(List<StockItem> source, Func<StockItem, object> grouping);
+        static string _stock;
+        static string _stockName;
+        static string _labelTimeframe = TimeFrame.Date.ToString();
+        static Func<StockItem, object> _grouping;
 
         public static async Task Main(string[] args)
         {
-            if(args.Length == 0)
-                
-            await FileOpen("Files/a/stock-a.csv");
+            InitArgs(args);
+            await FileOpen(_stock);
 
-            Console.WriteLine($"Stock Items Count : {_items.Count}");
+            Console.WriteLine($"Stock Name : {_stockName}");
+            Console.WriteLine($"Stock Items Count : {_items.Count:n0}");
             Console.WriteLine($"Start Date : {_items.OrderBy(o => o.Date).First().Date.ToString("dd/MM/yyyy")}");
             Console.WriteLine($"Last Date : {_items.OrderBy(o => o.Date).Last().Date.ToString("dd/MM/yyyy")}");
-            Console.WriteLine($"Time frame : Date");
+            Console.WriteLine($"Time frame : {_labelTimeframe}");
             Console.WriteLine("-----");
-           
-            TimeFrameDate zzzzz = new TimeFrameDate(StockHelper.Test);
-            foreach (var item in zzzzz(_items, ParamTimeFrame()).Select(s => new { s.Key, StockItems = s }).ToList())
+
+            foreach (var item in _items.TimeFrame(_grouping).Select(s => new { s.Key, StockItems = s }).ToList())
             {
                 Console.WriteLine();
-                Console.Write($"Date Item : {item.Key}");
-                Console.Write($" O : {item.StockItems.Open():F2}");
-                Console.Write($" H : {item.StockItems.High():F2}");
-                Console.Write($" C : {item.StockItems.Close():F2}");
-                Console.Write($" L : {item.StockItems.Low():F2}");
+                Console.Write($"Date : {StockHelper.PrintDate(item.Key)} -->  ");
+                Console.Write($" Open : {item.StockItems.Open():F2}");
+                Console.Write($" Close : {item.StockItems.Close():F2}");
+                Console.Write($" High : {item.StockItems.High():F2}");
+                Console.Write($" Low : {item.StockItems.Low():F2}");
             }
             Console.WriteLine();
         }
 
+        #region File
         private static async Task FileOpen(string path)
         {
             using (var reader = new StreamReader(path))
@@ -63,17 +65,79 @@ namespace StockAnalyzer
                 }
             }
         }
+        #endregion
 
-        private static Func<StockItem, object> ParamTimeFrame()
+        #region Args
+        private static void InitArgs(string[] args)
         {
-            Func<StockItem, object> grouping;
-            int x = 1;
-            switch (x)
+            try
             {
-                case 1: return grouping = (g) => g.Date.Date; 
-                case 2: return grouping = (g) => new { g.Date.Date, g.Date.Hour };
+                int arrIndex;
+                if (args.Length == 0)
+                {
+                    throw new StockArgumentException("Not found argument.");
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(args.Where(w => w.Equals("-s")).FirstOrDefault()))
+                    {
+                        throw new StockArgumentException("Missing stock argument  -s");
+                    }
+                    else
+                    {
+                        arrIndex = Array.IndexOf(args, "-s");
+                        ++arrIndex;
+                        if (arrIndex > args.Length || args[arrIndex].Contains("-"))
+                        {
+                            throw new StockArgumentException("Not found stock  -s  \"a\"|\"b\"  ");
+                        }
+                        else
+                        {
+                            _stockName = args[arrIndex];
+                            _stock = $"Files/stock-{args[arrIndex]}.csv";
+                        }
+                    }
+
+
+                    if (string.IsNullOrEmpty(args.Where(w => w.Contains("-t")).FirstOrDefault()))
+                    {
+                        throw new StockArgumentException("Missing timeframe argument  -t ");
+                    }
+                    else
+                    {
+                        arrIndex = Array.IndexOf(args, "-t");
+                        ++arrIndex;
+
+                        if (arrIndex > args.Length || args[arrIndex].Contains("-"))
+                        {
+                            throw new StockArgumentException("Wrong timeframe  -t  \"d\"|\"H\"  ");
+                        }
+                        else
+                        {
+                            if (args[arrIndex] == "d") //date
+                            {
+                                _labelTimeframe = TimeFrame.Date.ToString();
+                                _grouping = (g) => new { g.Date.Date };
+                            }
+                            else if (args[arrIndex] == "H")//hour
+                            {
+                                _labelTimeframe = TimeFrame.Hour.ToString();
+                                _grouping = (g) => new { g.Date.Date, g.Date.Hour };
+                            }
+                            else
+                            {
+                                throw new StockArgumentException("Wrong timeframe  -t  \"d\"|\"H\"  ");
+                            }
+                        }
+                    }
+                }
             }
-            return grouping = (g) => g.Date.Date; 
+            catch (StockArgumentException ex)
+            {
+                Console.WriteLine($"Error! {ex.Message}");
+                Environment.Exit(0);
+            }
         }
+        #endregion
     }
 }
