@@ -2,6 +2,7 @@
 using StockAnalyzer.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -12,32 +13,30 @@ namespace StockAnalyzer
     public static class Program
     {
         static List<StockItem> _items = new List<StockItem>();
-        delegate List<IGrouping<DateTime, StockItem>> TimeFrame(Func<StockItem, DateTime> grouping);
+        delegate List<IGrouping<object, StockItem>> TimeFrameDate(List<StockItem> source, Func<StockItem, object> grouping);
 
         public static async Task Main(string[] args)
         {
-
+            if(args.Length == 0)
+                
             await FileOpen("Files/a/stock-a.csv");
 
             Console.WriteLine($"Stock Items Count : {_items.Count}");
             Console.WriteLine($"Start Date : {_items.OrderBy(o => o.Date).First().Date.ToString("dd/MM/yyyy")}");
             Console.WriteLine($"Last Date : {_items.OrderBy(o => o.Date).Last().Date.ToString("dd/MM/yyyy")}");
+            Console.WriteLine($"Time frame : Date");
             Console.WriteLine("-----");
-
-            Func<StockItem, DateTime> grouping = (g) => g.Date.Date;
-            //  x => SqlFunctions.DateDiff("dd", startDate, x.CreateDate))
-            var x = _items.GroupBy(g => g.Date.Date);
-            foreach (var item in _items.TimeFrame(grouping).Select(s=>new {s.Key,StockItems=s }).ToList())
+           
+            TimeFrameDate zzzzz = new TimeFrameDate(StockHelper.Test);
+            foreach (var item in zzzzz(_items, ParamTimeFrame()).Select(s => new { s.Key, StockItems = s }).ToList())
             {
                 Console.WriteLine();
-                //var currents = item.StockItems.Low();
                 Console.Write($"Date Item : {item.Key}");
                 Console.Write($" O : {item.StockItems.Open():F2}");
                 Console.Write($" H : {item.StockItems.High():F2}");
                 Console.Write($" C : {item.StockItems.Close():F2}");
                 Console.Write($" L : {item.StockItems.Low():F2}");
             }
-
             Console.WriteLine();
         }
 
@@ -65,5 +64,16 @@ namespace StockAnalyzer
             }
         }
 
+        private static Func<StockItem, object> ParamTimeFrame()
+        {
+            Func<StockItem, object> grouping;
+            int x = 1;
+            switch (x)
+            {
+                case 1: return grouping = (g) => g.Date.Date; 
+                case 2: return grouping = (g) => new { g.Date.Date, g.Date.Hour };
+            }
+            return grouping = (g) => g.Date.Date; 
+        }
     }
 }
