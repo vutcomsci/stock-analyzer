@@ -39,6 +39,7 @@ namespace StockAnalyzer
                 Console.Write($" Low : {item.StockItems.Low():F2}");
             }
             Console.WriteLine();
+
         }
 
         #region File

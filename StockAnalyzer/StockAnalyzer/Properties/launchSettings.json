@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "StockAnalyzer": {
+      "commandName": "Project",
+      "commandLineArgs": " -t \"H\" -s \"b\""
+    }
+  }
+}

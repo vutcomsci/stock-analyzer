@@ -11,3 +11,16 @@ D:\Course\Stock\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyze
 D:\Course\Stock\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyzer.pdb
 D:\Course\Stock\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\Files\a\stock-a.csv
 D:\Course\Stock\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\Files\b\stock-b.csv
+D:\Wut\Course\StockAnalyzer\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\StockAnalyzer.deps.json
+D:\Wut\Course\StockAnalyzer\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\StockAnalyzer.runtimeconfig.json
+D:\Wut\Course\StockAnalyzer\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\StockAnalyzer.runtimeconfig.dev.json
+D:\Wut\Course\StockAnalyzer\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\StockAnalyzer.dll
+D:\Wut\Course\StockAnalyzer\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\StockAnalyzer.pdb
+D:\Wut\Course\StockAnalyzer\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyzer.csprojResolveAssemblyReference.cache
+D:\Wut\Course\StockAnalyzer\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyzer.csproj.CoreCompileInputs.cache
+D:\Wut\Course\StockAnalyzer\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyzer.AssemblyInfoInputs.cache
+D:\Wut\Course\StockAnalyzer\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyzer.AssemblyInfo.cs
+D:\Wut\Course\StockAnalyzer\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyzer.dll
+D:\Wut\Course\StockAnalyzer\StockAnalyzer\StockAnalyzer\obj\Debug\netcoreapp2.0\StockAnalyzer.pdb
+D:\Wut\Course\StockAnalyzer\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\Files\stock-a.csv
+D:\Wut\Course\StockAnalyzer\StockAnalyzer\StockAnalyzer\bin\Debug\netcoreapp2.0\Files\stock-b.csv
